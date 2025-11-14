@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E-Commerce Website</title>
+
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background: #f2f2f2; }
+
+        header { background: #232f3e; padding: 15px; color: white; text-align: center; }
+
+        nav {
+            background: #131921;
+            padding: 12px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: white;
+            margin: 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        section { padding: 25px; }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        .product {
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 0 5px #ccc;
+        }
+        .product img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 350px;
+            margin: auto;
+            box-shadow: 0 0 10px #bbb;
+        }
+
+        #success {
+            display: none;
+            margin-top: 15px;
+            color: green;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .review-box {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            box-shadow: 0 0 5px #ccc;
+        }
+    </style>
+
+    <script>
+        function loginSuccess() {
+            document.getElementById("success").style.display = "block";
+        }
+    </script>
+</head>
+
+<body>
+
+<header><h1>Sri Thunaivan online store</h1></header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#products">Products</a>
+    <a href="#about">About Us</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#login">Login</a>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+    <h2>Welcome!</h2>
+    <p>Find the best products at the best prices.</p>
+    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200&fit=crop" width="100%">
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+    <h2>Our Products</h2>
+
+    <div class="product-grid">
+
+        <script>
+            let names = [
+                "Smart Watch", "Bluetooth Speaker", "Gaming Laptop", "Running Shoes", "DSLR Camera",
+                "Wired Headphones", "Smartphone", "Office Chair", "LED TV", "Wireless Earbuds",
+                "Power Bank", "Laptop Bag", "4K Drone", "Bluetooth Headset", "Smart Fan",
+                "Sports T-Shirt", "Fitness Band", "Wireless Keyboard", "Wireless Mouse", "Smart Bulb",
+                "Water Bottle", "Sunglasses", "Perfume Spray", "Makeup Kit", "Hair Dryer",
+                "Hand Bag", "Mens Wallet", "Backpack", "Trimmer", "Smart Watch Pro",
+                "AC Cooler", "Bluetooth Soundbar", "Premium Shoes", "Camera Lens", "Tripod Stand",
+                "Travel Bag", "Office Shoes", "Smart Monitor", "Mini Speaker", "Keyboard Mouse Combo",
+                "4K TV", "Gaming Console", "Wireless Charger", "LED Lamp", "Kids Toy Car",
+                "Microwave Oven", "Rice Cooker", "Induction Stove", "Washing Machine", "Refrigerator"
+            ];
+
+            let imageLinks = [
+                "https://images.unsplash.com/photo-1512499617640-c2f999098c01",
+                "https://images.unsplash.com/photo-1585386959984-a4155224a1ad",
+                "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
+                "https://images.unsplash.com/photo-1503602642458-232111445657",
+                "https://images.unsplash.com/photo-1483985988355-763728e1935b",
+                "https://images.unsplash.com/photo-1495107334309-fcf20504a5ab",
+                "https://images.unsplash.com/photo-1481349518771-20055b2a7b24",
+                "https://images.unsplash.com/photo-1536305030434-83e88ba7a2a9",
+                "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
+                "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+                "https://images.unsplash.com/photo-1491553895911-0055eca6402d",
+                "https://images.unsplash.com/photo-1519558260268-cde7adc6c1dc",
+                "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1",
+                "https://images.unsplash.com/photo-1472851294608-062f824d29cc",
+                "https://images.unsplash.com/photo-1557180295-76eee20ae8aa",
+                "https://images.unsplash.com/photo-1555617117-08fda1a6ca1e",
+                "https://images.unsplash.com/photo-1611195974226-a7c1f13fdcf0",
+                "https://images.unsplash.com/photo-1585386959984-a4155224a1ad",
+                "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+                "https://images.unsplash.com/photo-1611195974226-a7c1f13fdcf0",
+                "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+                "https://images.unsplash.com/photo-1503602642458-232111445657",
+                "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
+                "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+                "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
+                "https://images.unsplash.com/photo-1481349518771-20055b2a7b24",
+                "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+                "https://images.unsplash.com/photo-1491553895911-0055eca6402d",
+                "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+                "https://images.unsplash.com/photo-1570129477492-45c003edd2be",
+                "https://images.unsplash.com/photo-1472851294608-062f824d29cc",
+                "https://images.unsplash.com/photo-1512499617640-c2f999098c01",
+                "https://images.unsplash.com/photo-1555617117-08fda1a6ca1e",
+                "https://images.unsplash.com/photo-1585386959984-a4155224a1ad",
+                "https://images.unsplash.com/photo-1536305030434-83e88ba7a2a9",
+                "https://images.unsplash.com/photo-1503602642458-232111445657",
+                "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
+                "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+                "https://images.unsplash.com/photo-1491553895911-0055eca6402d",
+                "https://images.unsplash.com/photo-1611195974226-a7c1f13fdcf0",
+                "https://images.unsplash.com/photo-1481349518771-20055b2a7b24",
+                "https://images.unsplash.com/photo-1555617117-08fda1a6ca1e",
+                "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
+                "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+                "https://images.unsplash.com/photo-1557180295-76eee20ae8aa",
+                "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
+                "https://images.unsplash.com/photo-1512499617640-c2f999098c01",
+                "https://images.unsplash.com/photo-1555617117-08fda1a6ca1e",
+                "https://images.unsplash.com/photo-1585386959984-a4155224a1ad",
+                "https://images.unsplash.com/photo-1536305030434-83e88ba7a2a9",
+                "https://images.unsplash.com/photo-1503602642458-232111445657",
+                "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
+                "https://images.unsplash.com/photo-1505740420928-5e560c06d30e"
+            ];
+
+            let prices = [
+                999, 799, 69999, 1299, 45999, 499, 19999, 4999, 22999, 1999,
+                899, 599, 69999, 1599, 3999, 499, 1299, 799, 499, 299,
+                199, 899, 499, 999, 1499, 1199, 399, 1499, 999, 2999,
+                19999, 4999, 2599, 15999, 999, 1499, 1299, 17999, 799, 899,
+                49999, 24999, 999, 599, 1499, 4999, 2999, 3999, 19999, 25999
+            ];
+
+            let html = "";
+            for (let i = 0; i < 50; i++) {
+                html += `
+                    <div class="product">
+                        <img src="${imageLinks[i]}?w=400&h=400&fit=crop" onerror="this.src='https://via.placeholder.com/200?text=No+Image'">
+                        <h4>${names[i]}</h4>
+                        <p>₹${prices[i]}</p>
+                    </div>
+                `;
+            }
+            document.write(html);
+        </script>
+
+    </div>
+</section>
+
+<!-- ABOUT US -->
+<section id="about">
+    <h2>About Us</h2>
+    <p>
+        Welcome to <b>My E-Commerce Store</b>, your trusted online shopping destination.
+        We provide premium quality products at affordable prices.
+        Our mission is to offer fast delivery, secure payments, and excellent customer support.
+        With thousands of satisfied customers, we continue to grow every day.
+    </p>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+    <h2>Customer Reviews</h2>
+
+    <div class="review-box">
+        ⭐⭐⭐⭐⭐  
+        <p>"Excellent quality products! Fast delivery and good packaging."</p>
+        <b>- Rahul Kumar</b>
+    </div>
+
+    <div class="review-box">
+        ⭐⭐⭐⭐  
+        <p>"The prices are affordable and the website is easy to use."</p>
+        <b>- Priya Sharma</b>
+    </div>
+
+    <div class="review-box">
+        ⭐⭐⭐⭐⭐  
+        <p>"Amazing customer service! I will definitely order again."</p>
+        <b>- Arjun Patel</b>
+    </div>
+
+</section>
+
+<!-- LOGIN -->
+<section id="login">
+    <h2>Login</h2>
+    <div class="card">
+        <form onsubmit="loginSuccess(); return false;">
+            <label>Email:</label><br>
+            <input type="email" style="width:100%; padding:8px;"><br><br>
+
+            <label>Password:</label><br>
+            <input type="password" style="width:100%; padding:8px;"><br><br>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <div id="success">✔ Login Successful!</div>
+    </div>
+</section>
+
+</body>
+</html>
